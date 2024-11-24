@@ -1,40 +1,53 @@
-param location string = 'UK South'
+resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+  name: 'rg-novahr'
+  location: 'UK South'
+}
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
   name: 'novahr-appserviceplan'
-  location: location
+  location: rg.location
   sku: {
     name: 'B1'
     tier: 'Basic'
   }
 }
 
-resource appService 'Microsoft.Web/sites@2021-03-01' = {
+resource frontEndAppService 'Microsoft.Web/sites@2021-02-01' = {
   name: 'novahr-webapp'
-  location: location
-  properties: {
-    serverFarmId: appServicePlan.id
-  }
+  location: rg.location
+  serverFarmId: appServicePlan.id
   identity: {
     type: 'SystemAssigned'
   }
 }
 
-resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
-  name: 'novahr-sqlserver'
-  location: location
+resource backEndAppService 'Microsoft.Web/sites@2021-02-01' = {
+  name: 'novahr-api'
+  location: rg.location
+  serverFarmId: appServicePlan.id
+  identity: {
+    type: 'SystemAssigned'
+  }
   properties: {
-    administratorLogin: 'sqladmin'
-    administratorLoginPassword: 'P@ssword1234!'
+    httpsOnly: true
   }
 }
 
-resource sqlDatabase 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
+resource sqlServer 'Microsoft.Sql/servers@2021-02-01' = {
+  name: 'novahr-sqlserver'
+  location: rg.location
+  administratorLogin: 'sqladmin'
+  administratorLoginPassword: 'P@ssword1234!'
+  version: '12.0'
+}
+
+resource sqlDatabase 'Microsoft.Sql/servers/databases@2021-02-01' = {
   name: 'novahr-sqldb'
   parent: sqlServer
-  location: location
+  location: rg.location
   sku: {
     name: 'Basic'
     tier: 'Basic'
+    capacity: 5
   }
 }
