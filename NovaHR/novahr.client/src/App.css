@@ -79,22 +79,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    /* Remove overflow: hidden as it was hiding the RGB effect */
 }
 
 .try-now-button::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    /* Adjust the positioning to maintain the border effect while fixing height */
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
     border-radius: 15px;
+    border: 2px solid transparent;
     background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
     background-size: 300% 300%;
     animation: rgb-border-clockwise 6s linear infinite;
     z-index: -1;
-    opacity: 0.3;
+    /* Remove opacity to restore vibrancy */
 }
 
 .try-now-button:hover {
