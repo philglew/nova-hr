@@ -1,4 +1,4 @@
-name: Azure Deployment
+name: Azure Infrastructure Deployment
 
 on:
   push:
@@ -7,38 +7,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy-infrastructure:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '18'
-
-    - name: Install Dependencies for React Front-end
-      working-directory: ./NovaHR/novahr.client
-      run: npm install
-
-    - name: Build React App
-      working-directory: ./NovaHR/novahr.client
-      run: npm run build
-
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '8.0.x'  # Updated to use .NET 8.0
-
-    - name: Restore Dependencies for ASP.NET API
-      working-directory: ./NovaHR/NovaHR.Server
-      run: dotnet restore
-
-    - name: Publish ASP.NET API
-      working-directory: ./NovaHR/NovaHR.Server
-      run: dotnet publish -c Release -o ./publish
 
     - name: Azure Login
       uses: azure/login@v1
@@ -49,19 +23,3 @@ jobs:
     - name: Deploy Bicep to Azure
       run: |
         az deployment group create --resource-group rg-novahr --template-file ./infrastructure.bicep
-
-    - name: Deploy Front-end to Azure App Service
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: novahr-webapp
-        slot-name: production
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ./NovaHR/novahr.client/build
-
-    - name: Deploy API to Azure App Service
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: novahr-api
-        slot-name: production
-        publish-profile: ${{ secrets.AZURE_API_PUBLISH_PROFILE }}
-        package: ./NovaHR/NovaHR.Server/publish
