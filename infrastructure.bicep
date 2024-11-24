@@ -1,15 +1,11 @@
-targetScope = 'subscription'
+targetScope = 'resourceGroup'
 
-// Create Resource Group
-resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: 'rg-novahr'
-  location: 'UK South'
-}
+// Create Resource Group (run this manually or as a separate step if needed)
 
 // App Service Plan for Frontend and Backend
-resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: 'novahr-appserviceplan'
-  location: resourceGroup.location
+  location: 'UK South'
   sku: {
     name: 'B1'
     tier: 'Basic'
@@ -17,54 +13,50 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
 }
 
 // Frontend Web App
-resource frontendAppService 'Microsoft.Web/sites@2021-02-01' = {
+resource frontendAppService 'Microsoft.Web/sites@2021-03-01' = {
   name: 'novahr-webapp'
-  location: resourceGroup.location
-  serverFarmId: appServicePlan.id
+  location: 'UK South'
+  properties: {
+    serverFarmId: appServicePlan.id
+    httpsOnly: true
+  }
   identity: {
     type: 'SystemAssigned'
-  }
-  properties: {
-    httpsOnly: true
   }
 }
 
 // Backend API App Service
-resource backendAppService 'Microsoft.Web/sites@2021-02-01' = {
+resource backendAppService 'Microsoft.Web/sites@2021-03-01' = {
   name: 'novahr-backend-api'
-  location: resourceGroup.location
-  serverFarmId: appServicePlan.id
+  location: 'UK South'
+  properties: {
+    serverFarmId: appServicePlan.id
+    httpsOnly: true
+  }
   identity: {
     type: 'SystemAssigned'
-  }
-  properties: {
-    httpsOnly: true
   }
 }
 
 // SQL Server
-resource sqlServer 'Microsoft.Sql/servers@2021-02-01' = {
+resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
   name: 'novahr-sqlserver'
-  location: resourceGroup.location
+  location: 'UK South'
   properties: {
     administratorLogin: 'sqladmin'
     administratorLoginPassword: 'P@ssword1234!'  // Replace this with a secure password
   }
-  tags: {
-    environment: 'production'
-  }
 }
 
 // SQL Database
-resource sqlDatabase 'Microsoft.Sql/servers/databases@2021-02-01' = {
-  name: 'novahr-sqldb'
+resource sqlDatabase 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
   parent: sqlServer
+  name: 'novahr-sqldb'
   properties: {
     collation: 'SQL_Latin1_General_CP1_CI_AS'
   }
   sku: {
     name: 'Basic'
     tier: 'Basic'
-    capacity: 5
   }
 }
