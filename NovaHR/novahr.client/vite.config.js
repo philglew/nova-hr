@@ -1,10 +1,6 @@
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import plugin from '@vitejs/plugin-react';
-import { env } from 'process';
-
-const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
-    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7001';
 
 // Vite Configuration
 export default defineConfig({
@@ -14,14 +10,13 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./src', import.meta.url))
         }
     },
-    server: {
-        proxy: {
-            '^/weatherforecast': {
-                target,
-                secure: false
-            }
+    build: {
+        outDir: 'build', // Specifies the build output directory for production
+        rollupOptions: {
+            input: './index.html', // Entry point for the production build
         },
-        port: 5173,
-        https: false  // Disable HTTPS as it is not needed for Azure Deployment
+        sourcemap: false, // Disable sourcemaps for smaller bundle sizes
+        minify: 'esbuild', // Use esbuild for minification for faster builds
+        chunkSizeWarningLimit: 500, // Increase warning limit to avoid warnings for larger chunks
     }
 });
