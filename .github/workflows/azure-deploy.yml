@@ -33,6 +33,10 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         enable-AzPSSession: true
 
+    - name: Create Resource Group
+      run: |
+        az group create --name rg-novahr --location "UK South"
+
     - name: Deploy Bicep to Azure
       run: |
         az deployment group create --resource-group rg-novahr --template-file ./infrastructure.bicep
