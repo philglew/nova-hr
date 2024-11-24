@@ -8,11 +8,8 @@
 }
 
 .app {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
     min-height: 100vh;
-    padding: 0 20px; /* Add some horizontal padding */
 }
 
 .toolbar {
@@ -55,13 +52,12 @@
     }
 
 .main-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    max-width: 1200px;
-    margin-top: 100px; /* Adjust space below toolbar */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    padding-top: 40px; /* Account for toolbar */
 }
 
 .welcome-box {
@@ -70,33 +66,8 @@
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 100%;
     max-width: 600px;
-}
-
-.content-box {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-}
-
-.content-image {
-    width: 300px;
-    height: 200px;
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    flex-shrink: 0;
-}
-
-.content-text {
-    flex: 1;
-    text-align: left;
+    margin: 0 auto; /* Center horizontally */
 }
 
 h1 {
@@ -105,15 +76,8 @@ h1 {
     color: black;
 }
 
-h2 {
-    margin: 0 0 15px;
-    font-size: 2rem;
-    color: black;
-}
-
 p {
     font-size: 1.25rem;
     color: black;
     margin: 0;
-    line-height: 1.5;
 }
