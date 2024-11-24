@@ -23,18 +23,20 @@ function App() {
 
     return (
         <div className="app">
-            <header className="toolbar">
-                <nav className="navbar">
-                    <ul>
-                        <li><a href="#" onClick={handleHomeClick}>NovaHR</a></li>
-                        <li><a href="#" onClick={handleLoginClick}>Login</a></li>
-                        <li><a href="#">About NovaHR</a></li>
-                        <li><a href="#">Plans and pricing</a></li>
-                        <li><a href="#">Sign up</a></li>
-                    </ul>
-                </nav>
+            <div className="toolbar-container">
+                <header className="toolbar">
+                    <nav className="navbar">
+                        <ul>
+                            <li><a href="#" onClick={handleHomeClick}>NovaHR</a></li>
+                            <li><a href="#" onClick={handleLoginClick}>Login</a></li>
+                            <li><a href="#">About NovaHR</a></li>
+                            <li><a href="#">Plans and pricing</a></li>
+                            <li><a href="#">Sign up</a></li>
+                        </ul>
+                    </nav>
+                </header>
                 <button className="try-now-button">Try now!</button>
-            </header>
+            </div>
             <main className={`main-content ${fading ? 'fade-out' : 'fade-in'}`}>
                 {showWelcome ? (
                     <div className="welcome-box">

@@ -1,4 +1,5 @@
-﻿body {
+﻿/* Global Styles */
+body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
@@ -12,21 +13,28 @@
     min-height: 100vh;
 }
 
-.toolbar {
+/* Toolbar and Try Now button styling */
+.toolbar-container {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the toolbar and Try Now button */
+    z-index: 1000;
+}
+
+.toolbar {
     background: white;
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
     width: 80%;
-    max-width: 1200px;
+    max-width: 1100px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .navbar ul {
@@ -34,8 +42,7 @@
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    gap: 20px;
 }
 
 .navbar li {
@@ -54,6 +61,63 @@
         color: #6E8DDB;
     }
 
+/* Try Now button */
+.try-now-button {
+    height: 100%;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #6E8DDB;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+}
+
+    .try-now-button::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        border-radius: 15px;
+        border: 2px solid transparent;
+        background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+        background-size: 300% 300%;
+        animation: rgb-border-clockwise 4s linear infinite;
+    }
+
+    .try-now-button:hover {
+        background-color: #5a78c9;
+    }
+
+/* RGB clockwise border animation */
+@keyframes rgb-border-clockwise {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 50% 100%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Main Content Styling */
 .main-content {
     position: absolute;
     top: 15%; /* Adjusted to reduce gap to approximately 1cm */
@@ -84,28 +148,8 @@ p {
     color: black;
     margin: 0;
 }
-/* Fade in and fade out animations */
-.fade-in {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-}
 
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* Login box styles */
-.login-box {
-    background-color: rgba(255, 255, 255, 0.85); /* Transparent background */
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
+/* Input and Form Styling */
 .input-field {
     display: block;
     width: calc(100% - 20px);
@@ -116,7 +160,7 @@ p {
     border-radius: 5px;
 }
 
-.login-button, .entra-id-button {
+.login-button, .microsoft-login-button {
     display: block;
     width: calc(100% - 20px);
     margin: 10px auto;
@@ -130,48 +174,23 @@ p {
     transition: background-color 0.3s ease-in-out;
 }
 
-.login-button:hover, .entra-id-button:hover {
-    background-color: #5a78c9;
+    .login-button:hover, .microsoft-login-button:hover {
+        background-color: #5a78c9;
+    }
+
+.microsoft-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }
 
-.try-now-button {
-    height: 100%;
-    margin-left: 10px; /* Small gap between toolbar and Try Now button */
-    padding: 0 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: #6E8DDB;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-    position: relative;
-    animation: rgb-border 4s linear infinite;
+/* Fade in and fade out animations */
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
-.try-now-button:hover {
-    background-color: #5a78c9;
-}
-
-@keyframes rgb-border {
-    0% {
-        box-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000;
-    }
-
-    25% {
-        box-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00;
-    }
-
-    50% {
-        box-shadow: 0 0 8px #0000ff, 0 0 16px #0000ff;
-    }
-
-    75% {
-        box-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff;
-    }
-
-    100% {
-        box-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000;
-    }
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
