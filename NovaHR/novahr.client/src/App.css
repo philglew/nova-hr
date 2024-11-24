@@ -57,6 +57,8 @@
     padding: 0; /* Ensure no extra space is added */
     box-sizing: border-box;
     width: 100%; /* Ensure it spans the full width */
+    margin: auto;
+    width: 50%;
 }
 
 
