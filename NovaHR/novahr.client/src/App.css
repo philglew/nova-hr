@@ -23,6 +23,8 @@ body {
     align-items: center;
     gap: 20px; /* Space between the toolbar and Try Now button */
     z-index: 1000;
+    width: 90%; /* Make the container wide to center everything */
+    max-width: 1200px;
 }
 
 .toolbar {
@@ -30,8 +32,7 @@ body {
     padding: 15px;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 1100px;
+    flex-grow: 1; /* Take up remaining space in the container */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,9 +58,9 @@ body {
     transition: color 0.3s ease-in-out;
 }
 
-.navbar a:hover {
-    color: #6E8DDB;
-}
+    .navbar a:hover {
+        color: #6E8DDB;
+    }
 
 /* Try Now button */
 .try-now-button {
@@ -75,21 +76,26 @@ body {
     outline: none;
     position: relative;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1; /* Ensure button content is above animation */
 }
 
-.try-now-button::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border-radius: 15px;
-    border: 2px solid transparent;
-    background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
-    background-size: 300% 300%;
-    animation: rgb-border-clockwise 6s linear infinite;
-}
+    .try-now-button::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        border-radius: 15px;
+        border: 2px solid transparent;
+        background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+        background-size: 300% 300%;
+        animation: rgb-border-clockwise 6s linear infinite;
+        z-index: -1; /* Ensure the border animation stays behind the button */
+    }
 
     .try-now-button:hover {
         background-color: #5a78c9;
@@ -175,9 +181,9 @@ p {
     transition: background-color 0.3s ease-in-out;
 }
 
-.login-button:hover, .microsoft-login-button:hover {
-    background-color: #5a78c9;
-}
+    .login-button:hover, .microsoft-login-button:hover {
+        background-color: #5a78c9;
+    }
 
 .microsoft-logo {
     width: 20px;
