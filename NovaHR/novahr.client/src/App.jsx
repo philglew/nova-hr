@@ -38,9 +38,11 @@ function App() {
             {contents}
         </div>
     );
-    
+
     async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
+        // Use the environment variable for the base URL
+        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await fetch(`${apiBaseUrl}/weatherforecast`);
         const data = await response.json();
         setForecasts(data);
     }
