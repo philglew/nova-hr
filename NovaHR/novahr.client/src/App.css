@@ -53,8 +53,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height to ensure perfect centering */
-    padding-top: 80px; /* Compensate for the fixed toolbar */
+    min-height: calc(100vh - 80px); /* Adjust height to account for toolbar */
+    padding: 0; /* Remove padding to allow proper alignment */
     box-sizing: border-box;
 }
 
