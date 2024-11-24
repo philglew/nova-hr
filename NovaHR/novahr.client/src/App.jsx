@@ -33,6 +33,7 @@ function App() {
                         <li><a href="#">Sign up</a></li>
                     </ul>
                 </nav>
+                <button className="try-now-button">Try now!</button>
             </header>
             <main className={`main-content ${fading ? 'fade-out' : 'fade-in'}`}>
                 {showWelcome ? (

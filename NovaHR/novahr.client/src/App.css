@@ -130,3 +130,45 @@ p {
 .login-button:hover, .entra-id-button:hover {
     background-color: #5a78c9;
 }
+
+.try-now-button {
+    background-color: #6E8DDB;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    animation: border-animate 3s linear infinite;
+    outline: none;
+}
+
+.try-now-button:hover {
+    background-color: #5a78c9;
+}
+
+@keyframes border-animate {
+    0% {
+        box-shadow: 2px 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB;
+    }
+
+    25% {
+        box-shadow: 2px 0 0 0 #6E8DDB, 0 2px 0 0 #6E8DDB, 0 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB;
+    }
+
+    50% {
+        box-shadow: 2px 0 0 0 #6E8DDB, 0 2px 0 0 #6E8DDB, -2px 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB;
+    }
+
+    75% {
+        box-shadow: 2px 0 0 0 #6E8DDB, 0 2px 0 0 #6E8DDB, -2px 0 0 0 #6E8DDB, 0 -2px 0 0 #6E8DDB;
+    }
+
+    100% {
+        box-shadow: 2px 0 0 0 #6E8DDB, 0 2px 0 0 #6E8DDB, -2px 0 0 0 #6E8DDB, 0 -2px 0 0 #6E8DDB;
+    }
+}
