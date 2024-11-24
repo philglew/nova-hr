@@ -24,6 +24,9 @@
     z-index: 1000;
     width: 80%;
     max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .navbar ul {
@@ -132,43 +135,43 @@ p {
 }
 
 .try-now-button {
-    background-color: #6E8DDB;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
+    height: 100%;
+    margin-left: 10px; /* Small gap between toolbar and Try Now button */
+    padding: 0 20px;
     font-size: 1rem;
     font-weight: bold;
+    color: white;
+    background-color: #6E8DDB;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    animation: border-animate 3s linear infinite;
     outline: none;
+    position: relative;
+    animation: rgb-border 4s linear infinite;
 }
 
 .try-now-button:hover {
     background-color: #5a78c9;
 }
 
-@keyframes border-animate {
+@keyframes rgb-border {
     0% {
-        box-shadow: 2px 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB;
+        box-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000;
     }
 
     25% {
-        box-shadow: 2px 0 0 0 #6E8DDB, 0 2px 0 0 #6E8DDB, 0 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB;
+        box-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00;
     }
 
     50% {
-        box-shadow: 2px 0 0 0 #6E8DDB, 0 2px 0 0 #6E8DDB, -2px 0 0 0 #6E8DDB, 0 0 0 0 #6E8DDB;
+        box-shadow: 0 0 8px #0000ff, 0 0 16px #0000ff;
     }
 
     75% {
-        box-shadow: 2px 0 0 0 #6E8DDB, 0 2px 0 0 #6E8DDB, -2px 0 0 0 #6E8DDB, 0 -2px 0 0 #6E8DDB;
+        box-shadow: 0 0 8px #ff00ff, 0 0 16px #ff00ff;
     }
 
     100% {
-        box-shadow: 2px 0 0 0 #6E8DDB, 0 2px 0 0 #6E8DDB, -2px 0 0 0 #6E8DDB, 0 -2px 0 0 #6E8DDB;
+        box-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000;
     }
 }
