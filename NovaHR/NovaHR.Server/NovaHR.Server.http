@@ -1,0 +1,6 @@
+@NovaHR.Server_HostAddress = http://localhost:5276
+
+GET {{NovaHR.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
