@@ -1,4 +1,4 @@
-name: Azure Deployment
+name: Azure Front-End Deployment
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build-and-deploy-frontend:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,7 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install Dependencies for Frontend
+    - name: Install Dependencies
       working-directory: ./NovaHR/novahr.client
       run: npm install
 
@@ -31,13 +31,8 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        enable-AzPSSession: true
 
-    - name: Deploy Bicep to Azure
-      run: |
-        az deployment group create --resource-group rg-novahr --template-file ./infrastructure.bicep
-
-    - name: Deploy Frontend to Azure App Service
+    - name: Deploy Front-End to Azure App Service
       uses: azure/webapps-deploy@v2
       with:
         app-name: novahr-webapp
@@ -45,23 +40,78 @@ jobs:
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ./NovaHR/novahr.client/build
 
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '8.0.x'
 
-    - name: Restore Dependencies for ASP.NET API
-      working-directory: ./NovaHR/NovaHR.Server
-      run: dotnet restore
 
-    - name: Publish ASP.NET API
-      working-directory: ./NovaHR/NovaHR.Server
-      run: dotnet publish -c Release -o ./publish
 
-    - name: Deploy Backend to Azure App Service
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: novahr-backend-api
-        slot-name: production
-        publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
-        package: ./NovaHR/NovaHR.Server/publish
+
+
+
+
+
+# name: Azure Deployment
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   workflow_dispatch:
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout Code
+#       uses: actions/checkout@v2
+
+#     - name: Set up Node.js
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: '18'
+
+#     - name: Install Dependencies for Frontend
+#       working-directory: ./NovaHR/novahr.client
+#       run: npm install
+
+#     - name: Build React App
+#       working-directory: ./NovaHR/novahr.client
+#       run: npm run build
+
+#     - name: Azure Login
+#       uses: azure/login@v1
+#       with:
+#         creds: ${{ secrets.AZURE_CREDENTIALS }}
+#         enable-AzPSSession: true
+
+#     - name: Deploy Bicep to Azure
+#       run: |
+#         az deployment group create --resource-group rg-novahr --template-file ./infrastructure.bicep
+
+#     - name: Deploy Frontend to Azure App Service
+#       uses: azure/webapps-deploy@v2
+#       with:
+#         app-name: novahr-webapp
+#         slot-name: production
+#         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+#         package: ./NovaHR/novahr.client/build
+
+#     - name: Set up .NET Core
+#       uses: actions/setup-dotnet@v2
+#       with:
+#         dotnet-version: '8.0.x'
+
+#     - name: Restore Dependencies for ASP.NET API
+#       working-directory: ./NovaHR/NovaHR.Server
+#       run: dotnet restore
+
+#     - name: Publish ASP.NET API
+#       working-directory: ./NovaHR/NovaHR.Server
+#       run: dotnet publish -c Release -o ./publish
+
+#     - name: Deploy Backend to Azure App Service
+#       uses: azure/webapps-deploy@v2
+#       with:
+#         app-name: novahr-backend-api
+#         slot-name: production
+#         publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
+#         package: ./NovaHR/NovaHR.Server/publish
