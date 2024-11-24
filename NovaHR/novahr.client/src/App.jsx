@@ -18,7 +18,7 @@ function App() {
                 <nav className="navbar">
                     <ul>
                         <li><a href="#">NovaHR</a></li>
-                        <li><a href="#" onClick={handleLoginClick}>Login</a></li>
+                        <li><a href="#!" onClick={(e) => { e.preventDefault(); handleLoginClick(); }}>Login</a></li>
                         <li><a href="#">About NovaHR</a></li>
                         <li><a href="#">Plans and pricing</a></li>
                         <li><a href="#">Sign up</a></li>
