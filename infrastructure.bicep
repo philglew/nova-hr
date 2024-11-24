@@ -1,11 +1,9 @@
 targetScope = 'resourceGroup'
 
-// Create Resource Group (run this manually or as a separate step if needed)
-
 // App Service Plan for Frontend and Backend
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: 'novahr-appserviceplan'
-  location: 'UK South'
+  location: resourceGroup().location  // Set location based on the resource group
   sku: {
     name: 'B1'
     tier: 'Basic'
@@ -15,7 +13,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
 // Frontend Web App
 resource frontendAppService 'Microsoft.Web/sites@2021-03-01' = {
   name: 'novahr-webapp'
-  location: 'UK South'
+  location: resourceGroup().location  // Set location based on the resource group
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
@@ -28,7 +26,7 @@ resource frontendAppService 'Microsoft.Web/sites@2021-03-01' = {
 // Backend API App Service
 resource backendAppService 'Microsoft.Web/sites@2021-03-01' = {
   name: 'novahr-backend-api'
-  location: 'UK South'
+  location: resourceGroup().location  // Set location based on the resource group
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
@@ -41,7 +39,7 @@ resource backendAppService 'Microsoft.Web/sites@2021-03-01' = {
 // SQL Server
 resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
   name: 'novahr-sqlserver'
-  location: 'UK South'
+  location: resourceGroup().location  // Set location based on the resource group
   properties: {
     administratorLogin: 'sqladmin'
     administratorLoginPassword: 'P@ssword1234!'  // Replace this with a secure password
@@ -52,6 +50,7 @@ resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
 resource sqlDatabase 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
   parent: sqlServer
   name: 'novahr-sqldb'
+  location: resourceGroup().location  // Set location based on the resource group
   properties: {
     collation: 'SQL_Latin1_General_CP1_CI_AS'
   }
