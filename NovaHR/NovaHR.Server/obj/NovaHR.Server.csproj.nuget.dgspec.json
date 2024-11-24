@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\philg\\Source\\Repos\\nova-hr\\NovaHR\\NovaHR.Server\\NovaHR.Server.csproj": {}
+    "C:\\Users\\philg\\source\\repos\\philglew\\nova-hr\\NovaHR\\NovaHR.Server\\NovaHR.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\philg\\Source\\Repos\\nova-hr\\NovaHR\\NovaHR.Server\\NovaHR.Server.csproj": {
+    "C:\\Users\\philg\\source\\repos\\philglew\\nova-hr\\NovaHR\\NovaHR.Server\\NovaHR.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\philg\\Source\\Repos\\nova-hr\\NovaHR\\NovaHR.Server\\NovaHR.Server.csproj",
+        "projectUniqueName": "C:\\Users\\philg\\source\\repos\\philglew\\nova-hr\\NovaHR\\NovaHR.Server\\NovaHR.Server.csproj",
         "projectName": "NovaHR.Server",
-        "projectPath": "C:\\Users\\philg\\Source\\Repos\\nova-hr\\NovaHR\\NovaHR.Server\\NovaHR.Server.csproj",
+        "projectPath": "C:\\Users\\philg\\source\\repos\\philglew\\nova-hr\\NovaHR\\NovaHR.Server\\NovaHR.Server.csproj",
         "packagesPath": "C:\\Users\\philg\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\philg\\Source\\Repos\\nova-hr\\NovaHR\\NovaHR.Server\\obj\\",
+        "outputPath": "C:\\Users\\philg\\source\\repos\\philglew\\nova-hr\\NovaHR\\NovaHR.Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\philg\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,7 +39,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "all"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -48,6 +49,14 @@
             "Microsoft.AspNetCore.SpaProxy": {
               "target": "Package",
               "version": "[8.*-*, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -65,12 +74,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Net.Sdk.Compilers.Toolset",
-              "version": "[9.0.100, 9.0.100]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
