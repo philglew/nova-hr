@@ -12,7 +12,9 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
 resource appService 'Microsoft.Web/sites@2021-03-01' = {
   name: 'novahr-webapp'
   location: location
-  serverFarmId: appServicePlan.id
+  properties: {
+    serverFarmId: appServicePlan.id
+  }
   identity: {
     type: 'SystemAssigned'
   }
