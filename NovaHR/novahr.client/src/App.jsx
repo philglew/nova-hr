@@ -4,10 +4,6 @@ import './App.css';
 function App() {
     const [showLoginBox, setShowLoginBox] = useState(false);
 
-    const handleLoginClick = () => {
-        setShowLoginBox(true);
-    };
-
     const handleCloseLoginBox = () => {
         setShowLoginBox(false);
     };
@@ -18,7 +14,7 @@ function App() {
                 <nav className="navbar">
                     <ul>
                         <li><a href="#">NovaHR</a></li>
-                        <li><a href="#!" onClick={(e) => { e.preventDefault(); handleLoginClick(); }}>Login</a></li>
+                        <li><a href="#!" onClick={(e) => { e.preventDefault(); setShowLoginBox(true); }}>Login</a></li>
                         <li><a href="#">About NovaHR</a></li>
                         <li><a href="#">Plans and pricing</a></li>
                         <li><a href="#">Sign up</a></li>
