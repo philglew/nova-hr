@@ -20,8 +20,8 @@ body {
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    align-items: stretch; /* Ensure toolbar and button match in height */
-    gap: 10px; /* Space between the toolbar and Try Now button */
+    align-items: center; /* Ensure both toolbar and button are vertically aligned */
+    gap: 15px; /* Space between the toolbar and Try Now button */
     z-index: 1000;
     width: 90%; /* Adjusted width for proper centering and full view */
     max-width: 1200px;
@@ -66,7 +66,7 @@ body {
 /* Try Now button */
 .try-now-button {
     height: 60px; /* Match toolbar height exactly */
-    padding: 0 30px;
+    padding: 0 25px;
     font-size: 1rem;
     font-weight: bold;
     color: white;
@@ -79,7 +79,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1; /* Ensure button content is above animation */
 }
 
     .try-now-button::before {
