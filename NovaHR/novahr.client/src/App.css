@@ -23,7 +23,7 @@ body {
     align-items: center;
     gap: 20px; /* Space between the toolbar and Try Now button */
     z-index: 1000;
-    width: 90%; /* Make the container wide to center everything */
+    width: 90%; /* Adjusted width for proper centering and full view */
     max-width: 1200px;
 }
 
@@ -64,18 +64,17 @@ body {
 
 /* Try Now button */
 .try-now-button {
-    height: 60px; /* Match toolbar height */
-    padding: 0 20px;
+    height: 60px; /* Match toolbar height exactly */
+    padding: 0 30px;
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    background-color: #6E8DDB;
+    background-color: #6E8DDB; /* Original button color */
     border: none;
     border-radius: 15px;
     cursor: pointer;
     outline: none;
     position: relative;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,7 +89,7 @@ body {
         right: -4px;
         bottom: -4px;
         border-radius: 15px;
-        border: 2px solid transparent;
+        border: 3px solid transparent;
         background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
         background-size: 300% 300%;
         animation: rgb-border-clockwise 6s linear infinite;
