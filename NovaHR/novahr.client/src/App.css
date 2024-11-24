@@ -53,11 +53,11 @@
 
 .main-content {
     position: absolute;
-    top: 50%;
+    top: 15%; /* Adjusted to reduce gap to approximately 1cm */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     width: 100%;
-    padding-top: 0px; /* Account for toolbar */
+    padding-top: 0;
 }
 
 .welcome-box {
