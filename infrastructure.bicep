@@ -3,7 +3,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   location: 'UK South'
 }
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: 'novahr-appserviceplan'
   location: rg.location
   sku: {
@@ -12,7 +12,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-02-01' = {
   }
 }
 
-resource appService 'Microsoft.Web/sites@2021-02-01' = {
+resource appService 'Microsoft.Web/sites@2021-03-01' = {
   name: 'novahr-webapp'
   location: rg.location
   serverFarmId: appServicePlan.id
@@ -21,21 +21,21 @@ resource appService 'Microsoft.Web/sites@2021-02-01' = {
   }
 }
 
-resource sqlServer 'Microsoft.Sql/servers@2021-02-01' = {
+resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
   name: 'novahr-sqlserver'
   location: rg.location
-  administratorLogin: 'sqladmin'
-  administratorLoginPassword: 'P@ssword1234!'
-  version: '12.0'
+  properties: {
+    administratorLogin: 'sqladmin'
+    administratorLoginPassword: 'P@ssword1234!'
+  }
 }
 
-resource sqlDatabase 'Microsoft.Sql/servers/databases@2021-02-01' = {
+resource sqlDatabase 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
   name: 'novahr-sqldb'
   parent: sqlServer
   location: rg.location
   sku: {
     name: 'Basic'
     tier: 'Basic'
-    capacity: 5
   }
 }
