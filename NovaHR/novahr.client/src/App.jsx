@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
@@ -47,7 +47,10 @@ function App() {
                             <input type="text" placeholder="Username" className="input-field" />
                             <input type="password" placeholder="Password" className="input-field" />
                             <button type="submit" className="login-button">Login</button>
-                            <button type="button" className="entra-id-button">Login with Entra ID</button>
+                            <button type="button" className="microsoft-login-button">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" className="microsoft-logo" />
+                                Login with Microsoft
+                            </button>
                         </form>
                     </div>
                 )}
