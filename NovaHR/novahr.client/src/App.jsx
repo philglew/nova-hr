@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
     const [showWelcome, setShowWelcome] = useState(true);
+    const [fading, setFading] = useState(false);
 
     const handleLoginClick = () => {
-        setShowWelcome(false);
+        setFading(true);
+        setTimeout(() => {
+            setShowWelcome(false);
+            setFading(false);
+        }, 500); // Matches the CSS transition duration (0.5s)
     };
 
     const handleHomeClick = () => {
-        setShowWelcome(true);
+        setFading(true);
+        setTimeout(() => {
+            setShowWelcome(true);
+            setFading(false);
+        }, 500); // Matches the CSS transition duration (0.5s)
     };
 
     return (
@@ -25,7 +34,7 @@ function App() {
                     </ul>
                 </nav>
             </header>
-            <main className={`main-content ${showWelcome ? 'fade-in' : 'fade-out'}`}>
+            <main className={`main-content ${fading ? 'fade-out' : 'fade-in'}`}>
                 {showWelcome ? (
                     <div className="welcome-box">
                         <h1>Welcome to NovaHR</h1>
