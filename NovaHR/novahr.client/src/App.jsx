@@ -16,12 +16,12 @@ function App() {
                 </nav>
             </header>
 
-            <main className="main-content">
+            <div className="welcome-box-container">
                 <div className="welcome-box">
                     <h1>Welcome to NovaHR</h1>
                     <p>Your all-in-one solution for HR management</p>
                 </div>
-            </main>
+            </div>
         </div>
     );
 }
