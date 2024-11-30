@@ -100,7 +100,7 @@ resource combinedAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-11-
             'get'
           ]
         }
-      },
+      }
       {
         tenantId: subscription().tenantId
         objectId: backendAppService.identity.principalId
