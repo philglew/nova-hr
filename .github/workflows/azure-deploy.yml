@@ -20,12 +20,11 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         enable-AzPSSession: true
 
-    - name: Deploy Azure Key Vault
+    - name: Deploy Azure Key Vault and Secrets
       run: |
         az deployment group create \
           --resource-group rg-novahr \
-          --template-file ./infrastructure.bicep \
-          --parameters keyVaultOnly=true
+          --template-file ./infrastructure.bicep
 
 
 

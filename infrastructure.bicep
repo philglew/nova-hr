@@ -1,6 +1,6 @@
 targetScope = 'resourceGroup'
 
-// Parameter to allow selective Key Vault deployment
+// Parameter to control Key Vault deployment
 param keyVaultOnly bool = false
 
 // App Service Plan for Frontend and Backend
@@ -73,6 +73,61 @@ resource keyVault 'Microsoft.KeyVault/vaults@2022-11-01' = {
       name: 'standard'
     }
     tenantId: subscription().tenantId
-    accessPolicies: []  // We'll manage access policies later if needed
+    accessPolicies: []
   }
+}
+
+// Secret in Key Vault for SQL Connection String
+resource sqlConnectionStringSecret 'Microsoft.KeyVault/vaults/secrets@2022-11-01' = {
+  parent: keyVault
+  name: 'sql-connection-string'
+  properties: {
+    value: 'Server=tcp:novahr-sqlserver.database.windows.net,1433;Initial Catalog=novahr-sqldb;Persist Security Info=False;User ID=sqladmin;Password=P@ssword1234!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30'
+  }
+}
+
+// Key Vault Access Policy for Frontend App Service
+resource frontendAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-11-01' = {
+  parent: keyVault
+  name: '${keyVault.name}/add'
+  properties: {
+    accessPolicies: [
+      {
+        tenantId: subscription().tenantId
+        objectId: frontendAppService.identity.principalId
+        permissions: {
+          secrets: [
+            'get'
+          ]
+        }
+      }
+    ]
+  }
+  dependsOn: [
+    keyVault
+    frontendAppService
+  ]
+}
+
+// Key Vault Access Policy for Backend App Service
+resource backendAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-11-01' = {
+  parent: keyVault
+  name: '${keyVault.name}/add'
+  properties: {
+    accessPolicies: [
+      {
+        tenantId: subscription().tenantId
+        objectId: backendAppService.identity.principalId
+        permissions: {
+          secrets: [
+            'get'
+          ]
+        }
+      }
+    ]
+  }
+  dependsOn: [
+    keyVault
+    backendAppService
+  ]
 }
