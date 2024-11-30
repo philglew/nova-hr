@@ -89,7 +89,7 @@ resource sqlConnectionStringSecret 'Microsoft.KeyVault/vaults/secrets@2022-11-01
 // Key Vault Access Policy for Frontend App Service
 resource frontendAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-11-01' = {
   parent: keyVault
-  name: '${keyVault.name}/add'
+  name: 'add'
   properties: {
     accessPolicies: [
       {
@@ -104,7 +104,6 @@ resource frontendAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-11-
     ]
   }
   dependsOn: [
-    keyVault
     frontendAppService
   ]
 }
@@ -112,7 +111,7 @@ resource frontendAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-11-
 // Key Vault Access Policy for Backend App Service
 resource backendAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-11-01' = {
   parent: keyVault
-  name: '${keyVault.name}/add'
+  name: 'add'
   properties: {
     accessPolicies: [
       {
@@ -127,7 +126,6 @@ resource backendAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-11-0
     ]
   }
   dependsOn: [
-    keyVault
     backendAppService
   ]
 }
