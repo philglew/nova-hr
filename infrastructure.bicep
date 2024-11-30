@@ -113,7 +113,7 @@ resource combinedAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2022-11-
     ]
   }
   dependsOn: [
-    frontendAppService,
+    frontendAppService
     backendAppService
   ]
 }
