@@ -41,7 +41,7 @@ function App() {
                 {showWelcome ? (
                     <div className="welcome-box">
                         <h1>Welcome to NovaHR</h1>
-                        <p>Your all-in-one solution for HR management</p>
+                        <p>Your all-in-one solution for human resources</p>
                     </div>
                 ) : (
                     <div className="login-box">

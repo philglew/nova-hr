@@ -1,0 +1,24 @@
+{
+  "Version": 1,
+  "Hash": "RoPXmGkvF3NvXvg3EsNBOj2C381M4f5lyuKzhYa4YpU=",
+  "Source": "NovaHR.Server",
+  "BasePath": "_content/NovaHR.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\philg\\source\\repos\\philglew\\nova-hr\\NovaHR\\novahr.client\\novahr.client.esproj",
+      "Version": 2,
+      "Source": "novahr.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -9,6 +9,7 @@ namespace NovaHR.Server.Data
         {
         }
 
-        // We'll add DbSet properties here once you provide the questionnaire questions
+        // Add DbSet property for Employees table
+        public DbSet<Employee> Employees { get; set; }
     }
 }
