@@ -56,11 +56,27 @@ text-decoration: none;
 color: black;
 font-weight: 600;
 padding: 10px;
+position: relative; /* Needed for the ::after element positioning */
 transition: color 0.3s ease-in-out;
 }
 
 .navbar a:hover {
-    color: #6E8DDB;
+color: #6E8DDB;
+}
+
+.navbar a::after {
+content: '';
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0%;
+height: 2px; /* Thickness of the underline */
+background-color: #6E8DDB;
+transition: width 0.3s ease-in-out;
+}
+
+.navbar a:hover::after {
+width: 100%; /* Line expands from left to right when hovered */
 }
 
 /* Try Now button */
@@ -82,44 +98,44 @@ justify-content: center;
 }
 
 .try-now-button::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: 15px;
-    border: 2px solid transparent;
-    background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
-    background-size: 300% 300%;
-    animation: rgb-border-clockwise 6s linear infinite;
-    z-index: -1;
+content: '';
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+border-radius: 15px;
+border: 2px solid transparent;
+background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+background-size: 300% 300%;
+animation: rgb-border-clockwise 6s linear infinite;
+z-index: -1;
 }
 
 .try-now-button:hover {
-    background-color: #5a78c9;
+background-color: #5a78c9;
 }
 
 /* RGB clockwise border animation */
 @keyframes rgb-border-clockwise {
 0% {
-    background-position: 0% 50%;
+background-position: 0% 50%;
 }
 
 25% {
-    background-position: 50% 100%;
+background-position: 50% 100%;
 }
 
 50% {
-    background-position: 100% 50%;
+background-position: 100% 50%;
 }
 
 75% {
-    background-position: 50% 0%;
+background-position: 50% 0%;
 }
 
 100% {
-    background-position: 0% 50%;
+background-position: 0% 50%;
 }
 }
 
@@ -134,16 +150,16 @@ padding-top: 0;
 }
 
 .welcome-box, .login-box {
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background for glass effect */
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 400px;
-    margin: 0 auto;
-    backdrop-filter: blur(15px); /* Blur effect to simulate frosted glass */
-    -webkit-backdrop-filter: blur(15px); /* Safari support for backdrop filter */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border to enhance glass effect */
+background: rgba(255, 255, 255, 0.2); /* Semi-transparent background for glass effect */
+padding: 2rem;
+border-radius: 15px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+text-align: center;
+max-width: 400px;
+margin: 0 auto;
+backdrop-filter: blur(15px); /* Blur effect to simulate frosted glass */
+-webkit-backdrop-filter: blur(15px); /* Safari support for backdrop filter */
+border: 1px solid rgba(255, 255, 255, 0.3); /* Light border to enhance glass effect */
 }
 
 
@@ -161,15 +177,15 @@ margin: 0;
 
 /* Input and Form Styling */
 .input-field {
-    display: block;
-    width: calc(100% - 20px);
-    margin: 10px auto;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    background-color: white; /* Set background to white */
-    color: black; /* Set text color to black */
+display: block;
+width: calc(100% - 20px);
+margin: 10px auto;
+padding: 10px;
+font-size: 1rem;
+border: 1px solid #ccc;
+border-radius: 15px;
+background-color: white; /* Set background to white */
+color: black; /* Set text color to black */
 }
 
 
@@ -189,7 +205,7 @@ transition: background-color 0.3s ease-in-out;
 }
 
 .login-button:hover, .microsoft-login-button:hover {
-    background-color: #5a78c9;
+background-color: #5a78c9;
 }
 
 .microsoft-logo {
@@ -209,8 +225,8 @@ padding: 10px 0;
 }
 
 .remember-me-container label {
-    font-size: 1rem;
-    color: #6E8DDB; /* Set text color of "Remember me" to #6E8DDB */
+font-size: 1rem;
+color: #6E8DDB; /* Set text color of "Remember me" to #6E8DDB */
 }
 
 .forgot-password-link {
@@ -221,22 +237,22 @@ transition: color 0.3s ease-in-out;
 }
 
 .forgot-password-link:hover {
-    color: #5a78c9;
+color: #5a78c9;
 }
 
 .checkbox-input {
-    margin-right: 10px;
-    width: 20px; /* Width for better tick visibility */
-    height: 20px;
-    -webkit-appearance: none; /* Remove default checkbox styling for WebKit browsers */
-    -moz-appearance: none; /* Remove default checkbox styling for Firefox */
-    appearance: none; /* Remove default checkbox styling for all browsers */
-    border: 2px solid #ccc; /* Define border to look like a checkbox */
-    border-radius: 3px; /* Optional: rounded corners for checkbox */
-    position: relative;
-    cursor: pointer;
-    background-color: white; /* Set the initial background color to white */
-    vertical-align: middle; /* Ensure checkbox is vertically aligned with the label */
+margin-right: 10px;
+width: 20px; /* Width for better tick visibility */
+height: 20px;
+-webkit-appearance: none; /* Remove default checkbox styling for WebKit browsers */
+-moz-appearance: none; /* Remove default checkbox styling for Firefox */
+appearance: none; /* Remove default checkbox styling for all browsers */
+border: 2px solid #ccc; /* Define border to look like a checkbox */
+border-radius: 3px; /* Optional: rounded corners for checkbox */
+position: relative;
+cursor: pointer;
+background-color: white; /* Set the initial background color to white */
+vertical-align: middle; /* Ensure checkbox is vertically aligned with the label */
 }
 
 .checkbox-input:checked {
@@ -255,9 +271,6 @@ border: solid #6E8DDB; /* Set tick color to #6E8DDB */
 border-width: 0 2px 2px 0;
 transform: translate(-50%, -50%) rotate(45deg); /* Center the tick mark and rotate to form a tick */
 }
-
-
-
 
 /* Fade in and fade out animations */
 .fade-in {

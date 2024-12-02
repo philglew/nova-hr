@@ -58,7 +58,6 @@ function App() {
                             </div>
                             <button type="submit" className="login-button">Login</button>
                             <button type="button" className="microsoft-login-button">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" className="microsoft-logo" />
                                 Login with Microsoft
                             </button>
                         </form>
