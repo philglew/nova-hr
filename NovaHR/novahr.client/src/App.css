@@ -59,9 +59,9 @@ body {
     transition: color 0.3s ease-in-out;
 }
 
-.navbar a:hover {
-    color: #6E8DDB;
-}
+    .navbar a:hover {
+        color: #6E8DDB;
+    }
 
 /* Try Now button */
 .try-now-button {
@@ -79,51 +79,48 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Remove overflow: hidden as it was hiding the RGB effect */
 }
 
-.try-now-button::before {
-    content: '';
-    position: absolute;
-    /* Adjust the positioning to maintain the border effect while fixing height */
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: 15px;
-    border: 2px solid transparent;
-    background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
-    background-size: 300% 300%;
-    animation: rgb-border-clockwise 6s linear infinite;
-    z-index: -1;
-    /* Remove opacity to restore vibrancy */
-}
+    .try-now-button::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 15px;
+        border: 2px solid transparent;
+        background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+        background-size: 300% 300%;
+        animation: rgb-border-clockwise 6s linear infinite;
+        z-index: -1;
+    }
 
-.try-now-button:hover {
-    background-color: #5a78c9;
-}
+    .try-now-button:hover {
+        background-color: #5a78c9;
+    }
 
 /* RGB clockwise border animation */
 @keyframes rgb-border-clockwise {
-0% {
-    background-position: 0% 50%;
-}
+    0% {
+        background-position: 0% 50%;
+    }
 
-25% {
-    background-position: 50% 100%;
-}
+    25% {
+        background-position: 50% 100%;
+    }
 
-50% {
-    background-position: 100% 50%;
-}
+    50% {
+        background-position: 100% 50%;
+    }
 
-75% {
-    background-position: 50% 0%;
-}
+    75% {
+        background-position: 50% 0%;
+    }
 
-100% {
-    background-position: 0% 50%;
-}
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Main Content Styling */
@@ -136,7 +133,7 @@ body {
     padding-top: 0;
 }
 
-.welcome-box {
+.welcome-box, .login-box {
     background-color: white;
     padding: 2rem;
     border-radius: 15px;
@@ -166,7 +163,8 @@ p {
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
+    background-color: white; /* Set background to white */
 }
 
 .login-button, .microsoft-login-button {
@@ -178,7 +176,7 @@ p {
     background-color: #6E8DDB;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
@@ -190,6 +188,36 @@ p {
 .microsoft-logo {
     width: 20px;
     height: 20px;
+    margin-right: 10px;
+}
+
+/* "Remember me" and Forgot Password Styling */
+.remember-me-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    padding: 10px 0;
+}
+
+.remember-me-container label {
+    font-size: 1rem;
+    color: #6E8DDB; /* Set text color of "Remember me" to #6E8DDB */
+}
+
+.forgot-password-link {
+    font-size: 0.9rem;
+    color: #6E8DDB;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.forgot-password-link:hover {
+    color: #5a78c9;
+}
+
+.checkbox-input {
     margin-right: 10px;
 }
 

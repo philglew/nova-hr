@@ -1,37 +1,35 @@
 using Azure.Identity;
-using Microsoft.EntityFrameworkCore;
-using NovaHR.Server.Data;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Retrieve Key Vault URI from configuration
-string keyVaultUri = builder.Configuration["KeyVault:VaultUri"];
+// Configure Azure Key Vault
+var keyVaultUri = "https://novahr-keyvault.vault.azure.net/";
+builder.Configuration.AddAzureKeyVault(new Uri(keyVaultUri), new DefaultAzureCredential());
 
-// Configure Azure Key Vault with managed identity authentication
-if (!string.IsNullOrEmpty(keyVaultUri))
-{
-    builder.Configuration.AddAzureKeyVault(
-        new Uri(keyVaultUri),
-        new DefaultAzureCredential());
-}
-
-// Configure DbContext with the connection string retrieved from Key Vault
+// Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration["sql-connection-string"]));  // Fetch connection string from Key Vault
 
-// Add services for MVC controllers, etc., if needed
-builder.Services.AddControllers();
+// Add other necessary services
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-// Configure middleware
-if (app.Environment.IsDevelopment())
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
 app.UseAuthorization();
+
+app.MapRazorPages();
 app.MapControllers();
 
 app.Run();

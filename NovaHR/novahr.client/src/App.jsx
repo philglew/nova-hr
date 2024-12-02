@@ -49,6 +49,13 @@ function App() {
                         <form>
                             <input type="text" placeholder="Username" className="input-field" />
                             <input type="password" placeholder="Password" className="input-field" />
+                            <div className="remember-me-container">
+                                <label>
+                                    <input type="checkbox" className="checkbox-input" />
+                                    Remember me
+                                </label>
+                                <a href="#" className="forgot-password-link">Forgot password?</a>
+                            </div>
                             <button type="submit" className="login-button">Login</button>
                             <button type="button" className="microsoft-login-button">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" className="microsoft-logo" />
