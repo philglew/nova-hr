@@ -1,158 +1,162 @@
 ﻿/* Global Styles */
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: linear-gradient(to bottom, #6E8DDB, #FFFFFF);
-    min-height: 100vh;
+font-family: 'Poppins', sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+background: linear-gradient(to bottom, #6E8DDB, #FFFFFF);
+min-height: 100vh;
 }
 
 .app {
-    text-align: center;
-    min-height: 100vh;
+text-align: center;
+min-height: 100vh;
 }
 
 /* Toolbar and Try Now button styling */
 .toolbar-container {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    z-index: 1000;
-    width: 90%;
-    max-width: 1200px;
+position: fixed;
+top: 20px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+align-items: center;
+gap: 15px;
+z-index: 1000;
+width: 90%;
+max-width: 1200px;
 }
 
 .toolbar {
-    background: white;
-    padding: 0 15px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
+background: white;
+padding: 0 15px;
+border-radius: 15px;
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+flex-grow: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+height: 60px;
 }
 
 .navbar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
+list-style-type: none;
+padding: 0;
+margin: 0;
+display: flex;
+gap: 20px;
 }
 
 .navbar li {
-    display: inline-block;
+display: inline-block;
 }
 
 .navbar a {
-    text-decoration: none;
-    color: black;
-    font-weight: 600;
-    padding: 10px;
-    transition: color 0.3s ease-in-out;
+text-decoration: none;
+color: black;
+font-weight: 600;
+padding: 10px;
+transition: color 0.3s ease-in-out;
 }
 
-    .navbar a:hover {
-        color: #6E8DDB;
-    }
+.navbar a:hover {
+    color: #6E8DDB;
+}
 
 /* Try Now button */
 .try-now-button {
-    height: 60px;
-    padding: 0 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: #6E8DDB;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    outline: none;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+height: 60px;
+padding: 0 25px;
+font-size: 1rem;
+font-weight: bold;
+color: white;
+background-color: #6E8DDB;
+border: none;
+border-radius: 15px;
+cursor: pointer;
+outline: none;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-    .try-now-button::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        border-radius: 15px;
-        border: 2px solid transparent;
-        background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
-        background-size: 300% 300%;
-        animation: rgb-border-clockwise 6s linear infinite;
-        z-index: -1;
-    }
+.try-now-button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 15px;
+    border: 2px solid transparent;
+    background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+    background-size: 300% 300%;
+    animation: rgb-border-clockwise 6s linear infinite;
+    z-index: -1;
+}
 
-    .try-now-button:hover {
-        background-color: #5a78c9;
-    }
+.try-now-button:hover {
+    background-color: #5a78c9;
+}
 
 /* RGB clockwise border animation */
 @keyframes rgb-border-clockwise {
-    0% {
-        background-position: 0% 50%;
-    }
+0% {
+    background-position: 0% 50%;
+}
 
-    25% {
-        background-position: 50% 100%;
-    }
+25% {
+    background-position: 50% 100%;
+}
 
-    50% {
-        background-position: 100% 50%;
-    }
+50% {
+    background-position: 100% 50%;
+}
 
-    75% {
-        background-position: 50% 0%;
-    }
+75% {
+    background-position: 50% 0%;
+}
 
-    100% {
-        background-position: 0% 50%;
-    }
+100% {
+    background-position: 0% 50%;
+}
 }
 
 /* Main Content Styling */
 .main-content {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 100%;
-    padding-top: 0;
+position: absolute;
+top: 20%;
+left: 50%;
+transform: translate(-50%, 0);
+width: 100%;
+padding-top: 0;
 }
 
 .welcome-box, .login-box {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background for glass effect */
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto;
+    backdrop-filter: blur(15px); /* Blur effect to simulate frosted glass */
+    -webkit-backdrop-filter: blur(15px); /* Safari support for backdrop filter */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border to enhance glass effect */
 }
 
+
 h1 {
-    margin: 0 0 20px;
-    font-size: 2.5rem;
-    color: black;
+margin: 0 0 20px;
+font-size: 2.5rem;
+color: black;
 }
 
 p {
-    font-size: 1.25rem;
-    color: black;
-    margin: 0;
+font-size: 1.25rem;
+color: black;
+margin: 0;
 }
 
 /* Input and Form Styling */
@@ -165,20 +169,23 @@ p {
     border: 1px solid #ccc;
     border-radius: 15px;
     background-color: white; /* Set background to white */
+    color: black; /* Set text color to black */
 }
 
+
 .login-button, .microsoft-login-button {
-    display: block;
-    width: calc(100% - 20px);
-    margin: 10px auto;
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #6E8DDB;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+display: block;
+width: 50%; /* Reduced width for smaller buttons */
+max-width: 250px; /* Set a max-width for consistency */
+margin: 15px auto; /* Increase the spacing between buttons */
+padding: 10px;
+font-size: 1rem;
+background-color: #6E8DDB;
+color: white;
+border: none;
+border-radius: 15px;
+cursor: pointer;
+transition: background-color 0.3s ease-in-out;
 }
 
 .login-button:hover, .microsoft-login-button:hover {
@@ -186,19 +193,19 @@ p {
 }
 
 .microsoft-logo {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+width: 20px;
+height: 20px;
+margin-right: 10px;
 }
 
 /* "Remember me" and Forgot Password Styling */
 .remember-me-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: calc(100% - 20px);
-    margin: 10px auto;
-    padding: 10px 0;
+display: flex;
+align-items: center; /* Vertically align checkbox and label */
+justify-content: space-between;
+width: calc(100% - 20px);
+margin: 10px auto;
+padding: 10px 0;
 }
 
 .remember-me-container label {
@@ -207,10 +214,10 @@ p {
 }
 
 .forgot-password-link {
-    font-size: 0.9rem;
-    color: #6E8DDB;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
+font-size: 1rem;
+color: #6E8DDB;
+text-decoration: none;
+transition: color 0.3s ease-in-out;
 }
 
 .forgot-password-link:hover {
@@ -219,15 +226,46 @@ p {
 
 .checkbox-input {
     margin-right: 10px;
+    width: 20px; /* Width for better tick visibility */
+    height: 20px;
+    -webkit-appearance: none; /* Remove default checkbox styling for WebKit browsers */
+    -moz-appearance: none; /* Remove default checkbox styling for Firefox */
+    appearance: none; /* Remove default checkbox styling for all browsers */
+    border: 2px solid #ccc; /* Define border to look like a checkbox */
+    border-radius: 3px; /* Optional: rounded corners for checkbox */
+    position: relative;
+    cursor: pointer;
+    background-color: white; /* Set the initial background color to white */
+    vertical-align: middle; /* Ensure checkbox is vertically aligned with the label */
 }
+
+.checkbox-input:checked {
+border-color: #6E8DDB; /* Change border color when checked */
+background-color: white; /* Keep the background white when checked */
+}
+
+.checkbox-input:checked::after {
+content: ''; /* Pseudo-element to show the tick mark */
+position: absolute;
+top: 50%;
+left: 50%;
+width: 6px;
+height: 12px;
+border: solid #6E8DDB; /* Set tick color to #6E8DDB */
+border-width: 0 2px 2px 0;
+transform: translate(-50%, -50%) rotate(45deg); /* Center the tick mark and rotate to form a tick */
+}
+
+
+
 
 /* Fade in and fade out animations */
 .fade-in {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+opacity: 1;
+transition: opacity 0.5s ease-in-out;
 }
 
 .fade-out {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+opacity: 0;
+transition: opacity 0.5s ease-in-out;
 }
